@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>角色 Prompt 複製鍵</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    background: #f8f8f8; 
+    padding: 20px; 
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .nav-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  .nav-btn:active {
+    transform: translateY(0);
+  }
+  .section-title {
+    color: #2c3e50;
+    font-size: 1.5em;
+    margin: 30px 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #667eea;
+  }
+  .box { 
+    background: #fff; 
+    border: 1px solid #ccc; 
+    padding: 15px; 
+    margin-bottom: 15px; 
+    border-radius: 6px;
+    transition: box-shadow 0.3s;
+  }
+  .box:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 { 
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 1.3em;
+  }
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 1em;
+    color: #555;
+    font-weight: normal;
+  }
+  pre { 
+    background: #f4f4f4; 
+    padding: 10px; 
+    border-radius: 4px; 
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin: 0;
+  }
+  button { 
+    margin-top: 8px; 
+    padding: 8px 16px; 
+    background: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.3s;
+  }
+  button:hover { 
+    background: #45a049; 
+  }
+  button:active {
+    transform: scale(0.98);
+  }
+  .copied {
+    background: #2196F3 !important;
+  }
+  .style-section {
+    background: #e3f2fd;
+    border-left: 4px solid #2196F3;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+  }
+  .style-section .box {
+    margin-bottom: 10px;
+  }
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s, opacity 0.3s;
+    z-index: 1000;
+    opacity: 0;
+  }
+  .back-to-top.show {
+    display: flex;
+    opacity: 1;
+  }
+  .back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  }
+  .back-to-top:active {
+    transform: translateY(-2px);
+  }
+</style>
+</head>
+<body>
+
+<h1>🎭 角色 Prompt 複製工具</h1>
+
+<div class="nav-buttons">
+  <button class="nav-btn" onclick="scrollToSection('characters')">👤 角色描述</button>
+  <button class="nav-btn" onclick="scrollToSection('styles')">🎨 光影風格</button>
+</div>
+
+<h2 class="section-title" id="characters">👤 角色描述</h2>
+
+<div class="box">
+  <h2>樊季衡</h2>
+  <pre id="fanjiheng">male, tanned healthy skin, silvery-blue short hair, naturally falling bangs, very short back hair, blood-red eyes, seductive smile, cross chain earrings, layered metal necklaces, whale bone tattoo on left shoulder, silky open-collar shirt, lean but muscular build, prominent collarbones, defined neck lines</pre>
+  <button onclick="copyText('fanjiheng', this)">複製</button>
+</div>
+
+<div class="box">
+  <h2>樊季昀（大哥）</h2>
+  <pre id="fanjiyun">Handsome man, black slicked-back hair, red eyes, black-rimmed glasses, fair slightly tan skin, white shirt with open collar, black suit, restrained sorrow, gold ring on left middle finger</pre>
+  <button onclick="copyText('fanjiyun', this)">複製</button>
+</div>
+
+<div class="box">
+  <h2>戚燁</h2>
+  <pre id="qiye">a tall young man with a lean, model-like build, silver-white short messy hair. deep brown eyes, a silver barbell tongue piercing</pre>
+  <button onclick="copyText('qiye', this)">複製</button>
+</div>
+
+<div class="box">
+  <h2>蘇湛</h2>
+  <pre id="suzhan">a tall young man, a strong and lean build broad shoulders, slightly tousled golden blond hair, short hair, gray eyes, a silver barbell tongue piercing</pre>
+  <button onclick="copyText('suzhan', this)">複製</button>
+</div>
+
+<div class="box">
+  <h2>師尊</h2>
+  <pre id="shizun">a flamboyant and cunning feng shui master standing front-facing, black shoulder-length tousled hair, sly golden eyes, confident smirk, tassels earrings</pre>
+  <button onclick="copyText('shizun', this)">複製</button>
+</div>
+
+<div class="box">
+  <h2>溫景悅</h2>
+  <pre id="wenjingyue">a tall handsome man , black hair with a few natural gray strands, softly parted and slightly wavy, slender big eyes, double eyelids, thin lips, a mole below the left eye</pre>
+  <button onclick="copyText('wenjingyue', this)">複製</button>
+</div>
+
+<div class="box">
+  <h2>楚汐</h2>
+  <pre id="chuxi">ultra-short clean haircut, no bangs, short pompadour hairstyle, soft beige-brown gradient hair color, slightly wavy texture, narrow black eyes, black irises, one raised eyebrow, thin lips, one-sided smirk, asymmetric cocky grin, gold thin-rimmed glasses slipping down nose, wearing black and white street-style jacket, silver rings, delicate semi-realistic style, soft lighting</pre>
+  <button onclick="copyText('chuxi', this)">複製</button>
+  
+  <div style="margin-top: 15px; padding-top: 15px; border-top: 2px dashed #ddd;">
+    <h3 style="margin: 0 0 8px 0; color: #FF6B9D; font-weight: bold; font-size: 1em;">
+      <span style="background: #FF6B9D; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.85em;">pixAI 專用</span>
+    </h3>
+    <pre id="chuxi_pixai">ultra-short clean haircut, no bangs, The Mellow Beige hair,slightly wavy texture,black irises eyes, thin lips, one raised eyebrow,one-sided smirk, asymmetric cocky grin gold thin-rimmed glasses slipping down nose, wearing black and white street-style jacket, silver rings</pre>
+    <button onclick="copyText('chuxi_pixai', this)">複製</button>
+  </div>
+</div>
+
+<div class="box">
+  <h2>祈盞</h2>
+  <pre id="qizhan">black long hair tied in elegant ancient bun with loose strands, vivid purple eyes</pre>
+  <button onclick="copyText('qizhan', this)">複製</button>
+</div>
+
+<div class="box">
+  <h2>孜蘊</h2>
+  <pre id="ziyun">ultra wide-angle shot, full-body view, anime-style illustration of a young man with short reddish-brown messy hair, slightly tousled strands, sharp light-blue eyes. he has a confident, arrogant expression and a clean, handsome face with a mischievous smirk. wearing a black leather jacket, he lounges half-lying on a sofa in a relaxed but defiant pose, holding a gun casually in one hand. cinematic lighting, high detail, dynamic composition, dramatic atmosphere</pre>
+  <button onclick="copyText('ziyun', this)">複製</button>
+</div>
+
+<h2 class="section-title" id="styles">🎨 光影風格詞彙</h2>
+
+<div class="style-section">
+  <div class="box">
+    <h3>半寫實+電影光斑｜防出真人+人物打光</h3>
+    <pre id="style1">delicate semi-realistic style</pre>
+    <button onclick="copyText('style1', this)">複製</button>
+  </div>
+
+  <div class="box">
+    <h3>半寫實電影感</h3>
+    <pre id="style2">semi-realistic cinematic tone</pre>
+    <button onclick="copyText('style2', this)">複製</button>
+  </div>
+
+  <div class="box">
+    <h3>明亮光｜防顏色灰暗</h3>
+    <pre id="style3">clean and bright composition, rich color depth</pre>
+    <button onclick="copyText('style3', this)">複製</button>
+  </div>
+
+  <div class="box">
+    <h3>冷色調｜二哥專用詞 或 陰暗冷酷風</h3>
+    <pre id="style4">cool tone lighting, smoky atmosphere</pre>
+    <button onclick="copyText('style4', this)">複製</button>
+  </div>
+
+  <div class="box">
+    <h3>底片風｜顆粒感較重</h3>
+    <pre id="style5">film-like grain and soft glow</pre>
+    <button onclick="copyText('style5', this)">複製</button>
+  </div>
+
+  <div class="box">
+    <h3>中遠景構圖</h3>
+    <pre id="style6">medium shot composition</pre>
+    <button onclick="copyText('style6', this)">複製</button>
+  </div>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+  ↑
+</button>
+
+<script>
+function copyText(id, buttonElement) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const originalText = buttonElement.innerText;
+    buttonElement.innerText = '已複製 ✓';
+    buttonElement.classList.add('copied');
+    
+    setTimeout(() => {
+      buttonElement.innerText = originalText;
+      buttonElement.classList.remove('copied');
+    }, 2000);
+  }).catch(err => {
+    alert('複製失敗,請重試');
+    console.error('複製錯誤:', err);
+  });
+}
+
+function scrollToSection(sectionId) {
+  const element = document.getElementById(sectionId);
+  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 監聽滾動事件,顯示/隱藏回到頂部按鈕
+window.addEventListener('scroll', function() {
+  const backToTopBtn = document.getElementById('backToTop');
+  if (window.pageYOffset > 300) {
+    backToTopBtn.classList.add('show');
+  } else {
+    backToTopBtn.classList.remove('show');
+  }
+});
+</script>
+
+</body>
+</html>
