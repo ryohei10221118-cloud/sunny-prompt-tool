@@ -44,21 +44,24 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
   .login-btn-small {
-    padding: 8px 16px;
-    background: #4285f4;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 14px;
-    display: inline-flex;
+    font-size: 20px;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    transition: background 0.3s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: 3px solid #667eea;
   }
   .login-btn-small:hover {
-    background: #357ae8;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
   .user-menu {
     display: none;
@@ -155,6 +158,7 @@
     font-weight: bold;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    white-space: nowrap;
   }
   .nav-btn:hover {
     transform: translateY(-2px);
@@ -171,11 +175,45 @@
     font-weight: bold;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    white-space: nowrap;
   }
   .add-category-btn-inline:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     background: #5a32a3 !important;
+  }
+  .mobile-nav-container {
+    display: none;
+    gap: 10px;
+    margin-bottom: 30px;
+    align-items: stretch;
+  }
+  .nav-select {
+    flex: 1;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%),
+                      url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, right 12px center;
+    background-size: cover, 20px;
+    padding-right: 40px;
+    height: 48px;
+    line-height: 1.2;
+  }
+  .nav-select option {
+    background: white;
+    color: #2c3e50;
   }
   .section-title {
     color: #2c3e50;
@@ -247,6 +285,10 @@
     cursor: pointer;
     transition: all 0.3s;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .item-card:hover {
     border-color: #667eea;
@@ -257,6 +299,33 @@
     font-weight: bold;
     color: #2c3e50;
     font-size: 1em;
+  }
+  .item-card-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background: #f0f0f0;
+  }
+  .image-input-group {
+    margin-bottom: 15px;
+  }
+  .image-preview-container {
+    margin-top: 10px;
+  }
+  .image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    border: 2px solid #e0e0e0;
+  }
+  .modal-item-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
   }
   .modal {
     display: none;
@@ -390,17 +459,12 @@
     border-radius: 50%;
     cursor: pointer;
     font-size: 24px;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s;
     z-index: 999;
-    opacity: 0;
-  }
-  .back-to-top.show {
-    display: flex;
-    opacity: 1;
   }
   .back-to-top:hover {
     transform: translateY(-5px);
@@ -425,7 +489,7 @@
   }
   .add-btn {
     background: #17a2b8 !important;
-    font-size: 0.9em;
+    font-size: 0.85rem;
     padding: 6px 12px;
   }
   .delete-btn {
@@ -433,7 +497,7 @@
   }
   .delete-section-btn {
     background: #dc3545 !important;
-    font-size: 0.9em;
+    font-size: 0.85rem;
     padding: 6px 12px;
   }
   .cancel-btn {
@@ -567,22 +631,50 @@
   .container { padding: 0 5px; }
   h1 { font-size: 1.5em; margin-top: 0; }
   .admin-bar {
-    position: static;
-    text-align: center;
-    margin-bottom: 15px;
+    top: 10px;
+    right: 10px;
   }
-  .nav-btn, .add-category-btn-inline {
-    padding: 10px 16px;
-    font-size: 0.9em;
+  .nav-buttons {
+    display: none;
+  }
+  .mobile-nav-container {
+    display: flex;
+  }
+  .nav-select {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    padding-right: 28px;
+    line-height: 1.2;
+    height: auto;
+  }
+  .add-category-btn-inline {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    padding: 6px 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: auto;
+    line-height: 1.2;
   }
   .add-btn, .delete-section-btn {
-    font-size: 0.85em;
+    font-size: 0.75rem;
   }
   .section-title {
     font-size: 1.2em;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title > span {
+    flex: 1;
+    min-width: 120px;
+  }
+  .section-actions {
+    flex-wrap: wrap;
+    gap: 5px;
   }
   .items-grid {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
@@ -610,7 +702,7 @@
 
 <div class="admin-bar">
   <button class="login-btn-small hidden" id="loginBtn">
-    🔐 登入
+    🔐
   </button>
 
   <div class="hidden" id="userAvatarContainer">
@@ -649,6 +741,12 @@
     <h1>澄家人🐍工具箱</h1>
 
     <div class="nav-buttons" id="navButtons"></div>
+
+    <div class="mobile-nav-container" id="mobileNavContainer">
+      <select class="nav-select" id="navSelect">
+        <option value="">選擇分類</option>
+      </select>
+    </div>
 
     <div id="sectionsContainer"></div>
   </div>
@@ -751,6 +849,16 @@
         <label class="category-input-label optional">PixAI Prompt（選填）</label>
         <textarea id="newItemPixaiPrompt" class="edit-textarea" placeholder="PixAI 專用版本..."></textarea>
       </div>
+      <div class="category-input-group">
+        <label class="category-input-label optional">範例圖片（選填）</label>
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <input type="file" id="newItemImageFile" class="edit-input" accept="image/*" onchange="handleImageUploadAdd(this)" style="flex: 1;" />
+          <button type="button" class="cancel-btn" onclick="clearImageAdd()" style="margin: 0; padding: 8px 16px;">清除</button>
+        </div>
+        <input type="text" id="newItemImageUrl" class="edit-input" placeholder="或輸入圖片 URL：https://example.com/image.jpg" oninput="previewImageAdd(this.value)" />
+        <div class="image-preview-container" id="newItemImagePreview"></div>
+        <div id="newItemUploadProgress" style="display: none; color: #17a2b8; font-size: 0.9em; margin-top: 5px;"></div>
+      </div>
       <div class="modal-actions">
         <button class="save-btn" onclick="confirmAddItem()">✓ 確定</button>
         <button class="cancel-btn" onclick="closeAddItemModal()">✕ 取消</button>
@@ -778,6 +886,16 @@
         <label class="category-input-label optional">PixAI Prompt（選填）</label>
         <textarea id="editItemPixaiPrompt" class="edit-textarea" placeholder="PixAI 專用版本..."></textarea>
       </div>
+      <div class="category-input-group">
+        <label class="category-input-label optional">範例圖片（選填）</label>
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <input type="file" id="editItemImageFile" class="edit-input" accept="image/*" onchange="handleImageUploadEdit(this)" style="flex: 1;" />
+          <button type="button" class="cancel-btn" onclick="clearImageEdit()" style="margin: 0; padding: 8px 16px;">清除</button>
+        </div>
+        <input type="text" id="editItemImageUrl" class="edit-input" placeholder="或輸入圖片 URL：https://example.com/image.jpg" oninput="previewImageEdit(this.value)" />
+        <div class="image-preview-container" id="editItemImagePreview"></div>
+        <div id="editItemUploadProgress" style="display: none; color: #17a2b8; font-size: 0.9em; margin-top: 5px;"></div>
+      </div>
       <div class="modal-actions">
         <button class="save-btn" onclick="confirmEditItem()">✓ 儲存</button>
         <button class="cancel-btn" onclick="closeEditItemModal()">✕ 取消</button>
@@ -790,6 +908,7 @@
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
   import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, orderBy, getDocs, updateDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+  import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
   // ⚠️ 重要：請將下方的 Firebase 設定替換為您自己的專案設定
   // 請前往 Firebase Console (https://console.firebase.google.com/)
@@ -835,6 +954,7 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
+  const storage = getStorage(app);
 
   let currentUser = null;
   let isEditMode = false;
@@ -965,6 +1085,7 @@
       await signInWithEmailAndPassword(auth, email, password);
       alert('登入成功！');
       closeLoginModal();
+      renderUI(); // 重新渲染界面以顯示編輯按鈕
     } catch (error) {
       if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
         // 如果用戶不存在，嘗試註冊
@@ -972,6 +1093,7 @@
           await createUserWithEmailAndPassword(auth, email, password);
           alert('註冊成功並已登入！');
           closeLoginModal();
+          renderUI(); // 重新渲染界面以顯示編輯按鈕
         } catch (registerError) {
           console.error('Register error:', registerError);
           alert('註冊失敗：' + registerError.message);
@@ -991,6 +1113,7 @@
       await signOut(auth);
       closeUserMenu();
       alert('已登出');
+      renderUI(); // 重新渲染界面以隱藏編輯按鈕
     } catch (error) {
       console.error('Logout error:', error);
       alert('登出失敗，請重試');
@@ -1068,22 +1191,52 @@
   // 渲染導航按鈕
   function renderNavigationButtons() {
     const container = document.getElementById('navButtons');
+    const mobileContainer = document.getElementById('mobileNavContainer');
     const sortedSections = Object.entries(allData).sort((a, b) => {
       return (a[1].createdAt || 0) - (b[1].createdAt || 0);
     });
 
+    // 桌面端按鈕
     let html = '';
+    // 新增分類按鈕在最左邊
+    if (currentUser) {
+      html += `<button class="add-category-btn-inline" onclick="openAddCategoryModal()">➕ 新增分類</button>`;
+    }
+    // 接著按創建順序顯示分類按鈕
     sortedSections.forEach(([name, section]) => {
       const icon = section.icon || '📁';
       html += `<button class="nav-btn" onclick="scrollToSection('${name}')">${icon} ${name}</button>`;
     });
+    container.innerHTML = html;
 
+    // 手機端下拉選單
+    let mobileHtml = '<select class="nav-select" id="navSelect" onchange="handleCategorySelect(this)">';
+    mobileHtml += '<option value="">📂 選擇分類</option>';
+    sortedSections.forEach(([name, section]) => {
+      const icon = section.icon || '📁';
+      mobileHtml += `<option value="${name}">${icon} ${name}</option>`;
+    });
+    mobileHtml += '</select>';
+
+    // 新增分類按鈕
     if (currentUser) {
-      html += `<button class="add-category-btn-inline" onclick="openAddCategoryModal()">➕ 新增分類</button>`;
+      mobileHtml += `<button class="add-category-btn-inline" onclick="openAddCategoryModal()">➕ 新增分類</button>`;
     }
 
-    container.innerHTML = html;
+    mobileContainer.innerHTML = mobileHtml;
   }
+
+  // 處理手機端分類選擇
+  window.handleCategorySelect = function(select) {
+    const sectionName = select.value;
+    if (sectionName) {
+      scrollToSection(sectionName);
+      // 滾動後重置選單到預設狀態
+      setTimeout(() => {
+        select.value = '';
+      }, 500);
+    }
+  };
 
   // 渲染所有分類
   function renderSections() {
@@ -1127,8 +1280,10 @@
 
   // 渲染項目（檢視模式）
   function renderItemViewMode(sectionName, item, index) {
+    const imageHtml = item.imageUrl ? `<img src="${item.imageUrl}" class="item-card-image" alt="${item.name}" onerror="this.style.display='none'" />` : '';
     return `
       <div class="item-card" onclick="openItemModal('${sectionName}', ${index})">
+        ${imageHtml}
         <div class="item-card-name">${item.name}</div>
       </div>
     `;
@@ -1171,6 +1326,11 @@
     document.getElementById('modalHeaderActions').innerHTML = headerActionsHtml;
 
     let bodyHtml = '';
+
+    // 顯示圖片
+    if (item.imageUrl) {
+      bodyHtml += `<img src="${item.imageUrl}" class="modal-item-image" alt="${item.name}" onerror="this.style.display='none'" />`;
+    }
 
     // 判斷顯示邏輯
     const hasPrompt = item.prompt && item.prompt.trim();
@@ -1318,6 +1478,10 @@
     document.getElementById('newItemName').value = '';
     document.getElementById('newItemPrompt').value = '';
     document.getElementById('newItemPixaiPrompt').value = '';
+    document.getElementById('newItemImageUrl').value = '';
+    document.getElementById('newItemImageFile').value = '';
+    document.getElementById('newItemImagePreview').innerHTML = '';
+    document.getElementById('newItemUploadProgress').style.display = 'none';
     document.getElementById('addItemModal').classList.add('show');
 
     // 自動聚焦到角色名稱輸入框
@@ -1344,6 +1508,7 @@
     const name = document.getElementById('newItemName').value.trim();
     const prompt = document.getElementById('newItemPrompt').value.trim();
     const pixaiPrompt = document.getElementById('newItemPixaiPrompt').value.trim();
+    const imageUrl = document.getElementById('newItemImageUrl').value.trim();
 
     if (!name) {
       alert('請輸入角色名稱');
@@ -1362,6 +1527,10 @@
 
     if (pixaiPrompt) {
       newItem.pixaiPrompt = pixaiPrompt;
+    }
+
+    if (imageUrl) {
+      newItem.imageUrl = imageUrl;
     }
 
     allData[currentSectionForNewItem].items.push(newItem);
@@ -1390,6 +1559,16 @@
     document.getElementById('editItemName').value = item.name || '';
     document.getElementById('editItemPrompt').value = item.prompt || '';
     document.getElementById('editItemPixaiPrompt').value = item.pixaiPrompt || '';
+    document.getElementById('editItemImageUrl').value = item.imageUrl || '';
+    document.getElementById('editItemImageFile').value = '';
+    document.getElementById('editItemUploadProgress').style.display = 'none';
+
+    // 顯示圖片預覽
+    if (item.imageUrl) {
+      document.getElementById('editItemImagePreview').innerHTML = `<img src="${item.imageUrl}" class="image-preview" alt="預覽" onerror="this.style.display='none'" />`;
+    } else {
+      document.getElementById('editItemImagePreview').innerHTML = '';
+    }
 
     // 先關閉詳情 Modal，再開啟編輯 Modal
     closeModal();
@@ -1420,6 +1599,7 @@
     const name = document.getElementById('editItemName').value.trim();
     const prompt = document.getElementById('editItemPrompt').value.trim();
     const pixaiPrompt = document.getElementById('editItemPixaiPrompt').value.trim();
+    const imageUrl = document.getElementById('editItemImageUrl').value.trim();
 
     if (!name) {
       alert('請輸入角色名稱');
@@ -1438,6 +1618,10 @@
 
     if (pixaiPrompt) {
       updatedItem.pixaiPrompt = pixaiPrompt;
+    }
+
+    if (imageUrl) {
+      updatedItem.imageUrl = imageUrl;
     }
 
     allData[currentSectionForEditItem].items[currentIndexForEditItem] = updatedItem;
@@ -1574,6 +1758,122 @@
     }
   };
 
+  // 圖片預覽（新增）
+  window.previewImageAdd = function(url) {
+    const preview = document.getElementById('newItemImagePreview');
+    if (url && url.trim()) {
+      preview.innerHTML = `<img src="${url}" class="image-preview" alt="預覽" onerror="this.parentElement.innerHTML='<small style=color:#dc3545>無法載入圖片</small>'" />`;
+    } else {
+      preview.innerHTML = '';
+    }
+  };
+
+  // 圖片預覽（編輯）
+  window.previewImageEdit = function(url) {
+    const preview = document.getElementById('editItemImagePreview');
+    if (url && url.trim()) {
+      preview.innerHTML = `<img src="${url}" class="image-preview" alt="預覽" onerror="this.parentElement.innerHTML='<small style=color:#dc3545>無法載入圖片</small>'" />`;
+    } else {
+      preview.innerHTML = '';
+    }
+  };
+
+  // 上傳圖片到 Firebase Storage（新增）
+  window.handleImageUploadAdd = async function(input) {
+    if (!input.files || !input.files[0]) return;
+
+    const file = input.files[0];
+    const progressDiv = document.getElementById('newItemUploadProgress');
+    const preview = document.getElementById('newItemImagePreview');
+
+    try {
+      progressDiv.style.display = 'block';
+      progressDiv.textContent = '⏳ 上傳中...';
+
+      // 創建唯一的文件名
+      const timestamp = new Date().getTime();
+      const fileName = `images/${timestamp}_${file.name}`;
+      const storageRef = ref(storage, fileName);
+
+      // 上傳文件
+      await uploadBytes(storageRef, file);
+
+      // 獲取下載 URL
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // 設置 URL 輸入框的值
+      document.getElementById('newItemImageUrl').value = downloadURL;
+
+      // 顯示預覽
+      preview.innerHTML = `<img src="${downloadURL}" class="image-preview" alt="預覽" />`;
+
+      progressDiv.textContent = '✓ 上傳成功！';
+      setTimeout(() => {
+        progressDiv.style.display = 'none';
+      }, 2000);
+    } catch (error) {
+      console.error('Upload error:', error);
+      progressDiv.textContent = '✗ 上傳失敗：' + error.message;
+      progressDiv.style.color = '#dc3545';
+    }
+  };
+
+  // 上傳圖片到 Firebase Storage（編輯）
+  window.handleImageUploadEdit = async function(input) {
+    if (!input.files || !input.files[0]) return;
+
+    const file = input.files[0];
+    const progressDiv = document.getElementById('editItemUploadProgress');
+    const preview = document.getElementById('editItemImagePreview');
+
+    try {
+      progressDiv.style.display = 'block';
+      progressDiv.textContent = '⏳ 上傳中...';
+
+      // 創建唯一的文件名
+      const timestamp = new Date().getTime();
+      const fileName = `images/${timestamp}_${file.name}`;
+      const storageRef = ref(storage, fileName);
+
+      // 上傳文件
+      await uploadBytes(storageRef, file);
+
+      // 獲取下載 URL
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // 設置 URL 輸入框的值
+      document.getElementById('editItemImageUrl').value = downloadURL;
+
+      // 顯示預覽
+      preview.innerHTML = `<img src="${downloadURL}" class="image-preview" alt="預覽" />`;
+
+      progressDiv.textContent = '✓ 上傳成功！';
+      setTimeout(() => {
+        progressDiv.style.display = 'none';
+      }, 2000);
+    } catch (error) {
+      console.error('Upload error:', error);
+      progressDiv.textContent = '✗ 上傳失敗：' + error.message;
+      progressDiv.style.color = '#dc3545';
+    }
+  };
+
+  // 清除圖片（新增）
+  window.clearImageAdd = function() {
+    document.getElementById('newItemImageFile').value = '';
+    document.getElementById('newItemImageUrl').value = '';
+    document.getElementById('newItemImagePreview').innerHTML = '';
+    document.getElementById('newItemUploadProgress').style.display = 'none';
+  };
+
+  // 清除圖片（編輯）
+  window.clearImageEdit = function() {
+    document.getElementById('editItemImageFile').value = '';
+    document.getElementById('editItemImageUrl').value = '';
+    document.getElementById('editItemImagePreview').innerHTML = '';
+    document.getElementById('editItemUploadProgress').style.display = 'none';
+  };
+
   // 開啟建議 Modal
   window.openSuggestionModal = function() {
     document.getElementById('suggestionText').value = '';
@@ -1633,16 +1933,6 @@
   window.scrollToTop = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  // 滾動監聽
-  window.addEventListener('scroll', () => {
-    const backToTop = document.getElementById('backToTop');
-    if (window.scrollY > 300) {
-      backToTop.classList.add('show');
-    } else {
-      backToTop.classList.remove('show');
-    }
-  });
 
 </script>
 
